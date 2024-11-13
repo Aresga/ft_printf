@@ -6,7 +6,7 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:49:51 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/13 17:36:13 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/13 18:05:40 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 
 int main()
 {
+	unsigned int unsignedNum = 123;
+	char *ptr = "123";
+
 	ft_printf("String is: %s\n", "adbsn");
 	ft_printf("Character: %c\n", 'A');
 	ft_printf("My Age is %d\n", INT_MIN);
@@ -32,7 +35,11 @@ int main()
 	ft_printf("my char in base16 are %x\n", 52545);
 	ft_printf("my char in base16 are %X\n", 52545);
 	ft_printf("%%\n");
+	ft_printf("My Age is %i\n", 123);
+	ft_printf("Unsigned integer: %u\n", unsignedNum);
+	ft_printf("Pointer address: %p\n", ptr);
 
+	printf("\n");
 	printf("\n");
 	printf("String is: %s\n", "adbsn");
 	printf("Character: %c\n", 'A');
@@ -41,5 +48,9 @@ int main()
 	printf("my char in base16 are %x\n", 52545);
 	printf("my char in base16 are %X\n", 52545);
 	printf("%%\n");
+	printf("My Age is %i\n", 123);
+	printf("Unsigned integer: %u\n", unsignedNum);
+	printf("Pointer address: %p\n", ptr);
     return 0;
 }
+    

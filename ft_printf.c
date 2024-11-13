@@ -6,7 +6,7 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:50:06 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/13 17:35:53 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/13 18:01:53 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static int ft_putnbr_base(long n, int base, int b)
 	int i;
 	char *symb;
 
-	if (b == 10)
+	if (b == 1)
 		symb = "0123456789";
-	else if (b == 16)
+	else if (b == 6)
 		symb = "0123456789abcdef";
-	else if (b == 17)
+	else if (b == 7)
 		symb = "0123456789ABCDEF";
 	if (n < 0)
 	{
@@ -53,7 +53,25 @@ static int ft_putnbr_base(long n, int base, int b)
 		return (i + ft_putnbr_base(n % base, base, b));
 	}
 }
+static int ft_putptr(unsigned long ptr)
+{
+	int	i;
 
+	i = 0;
+	i += ft_putstr("0x");
+	i += ft_putnbr_base(ptr, 16, 0);
+	return (i);
+}
+static int ft_putnbr_u(unsigned int n)
+{
+	int	i;
+
+	i = 0;
+	if (n >= 10)
+		i += ft_putnbr_u(n / 10);
+	i += ft_putchar((n % 10) + '0');
+	return (i);
+}
 
 static char	ft_print_format(char specifier, va_list ap)
 {
@@ -64,14 +82,18 @@ static char	ft_print_format(char specifier, va_list ap)
 		i += ft_putchar(va_arg(ap, int));
 	else if (specifier == 's')
 		i += ft_putstr(va_arg(ap, char *));
-	else if (specifier == 'd')
-		i += ft_putnbr_base((long)va_arg(ap, int), 10, 10);
+	else if (specifier == 'd' || specifier == 'i')
+		i += ft_putnbr_base((long)va_arg(ap, int), 10, 1);
 	else if (specifier == 'x')
-		i += ft_putnbr_base((long)va_arg(ap, unsigned int), 16, 16);
+		i += ft_putnbr_base((long)va_arg(ap, unsigned int), 16, 6);
 	else if (specifier == 'X')
-		i += ft_putnbr_base((long)va_arg(ap, unsigned int), 16, 17);
+		i += ft_putnbr_base((long)va_arg(ap, unsigned int), 16, 7);
 	else if (specifier == '%')
 		i += ft_putchar('%');
+	else if (specifier == 'p')
+		i += ft_putptr((unsigned long)va_arg(ap, void *));
+	else if (specifier == 'u')
+		i += ft_putnbr_u(va_arg(ap, unsigned int));
 	else
 		i += write(1, &specifier, 1);
 	return (i); 

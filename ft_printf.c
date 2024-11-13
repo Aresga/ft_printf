@@ -1,0 +1,89 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 20:50:06 by agaga             #+#    #+#             */
+/*   Updated: 2024/11/13 16:29:52 by agaga            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+static int	ft_putchar(int c)
+{
+    return (write(1, &c, 1));
+}
+static int	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	return i; // Add a return statement
+}
+
+static int	ft_putnbr_base(long n, int base)
+{
+	int	i;
+	char *symb;
+
+//	if (base < 2 || base > 16)
+//        return (0);
+	symb = "0123456789abcdef";
+	if (n < 0)
+	{
+		ft_putchar('-');
+		return (ft_putnbr_base(-n, base) + 1);
+	}
+	else if (n < base)
+		return (ft_putchar(symb[n]));
+	else
+	{
+		i = ft_putnbr_base(n / base, base);
+		return (i + ft_putnbr_base(symb[n % base], base));
+	}
+}
+
+static char	ft_print_format(char specifier, va_list ap)
+{
+	int i; 
+
+	i = 0;
+	if (specifier == 'c')
+		i += ft_putchar(va_arg(ap, int));
+	else if (specifier == 's')
+		i += ft_putstr(va_arg(ap, char *));
+	else if (specifier == 'd')
+		i += ft_putnbr_base((long)va_arg(ap, int), 10);
+	else if (specifier == 'x')
+		i += ft_putnbr_base((long)va_arg(ap, unsigned int), 16);
+	else
+		i += write(1, &specifier, 1);
+	return (i); 
+}
+
+int ft_printf(const char *format, ...)
+{
+	va_list ap;
+	int count;
+
+	va_start(ap, format);
+	count = 0;
+	while (*format != '\0')
+	{
+		if (*format == '%')
+			count += ft_print_format(*(++format), ap);
+		else
+			count += write(1, format, 1);
+		++format;
+	}
+	va_end(ap);
+	return count;
+}

@@ -6,7 +6,7 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:50:06 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/13 18:01:53 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/13 18:30:13 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int ft_putptr(unsigned long ptr)
 
 	i = 0;
 	i += ft_putstr("0x");
-	i += ft_putnbr_base(ptr, 16, 0);
+	i += ft_putnbr_base(ptr, 16, 1);
 	return (i);
 }
 static int ft_putnbr_u(unsigned int n)

@@ -19,6 +19,18 @@ TEST_EXECUTABLES = $(TEST_FILES:$(TESTS_DIR)/%.c=%)
 $(TEST_EXECUTABLES): %: $(TESTS_DIR)/%.c $(PRINTF)
 	@$(CC) $(CFLAGS) -I$(PRINTF_DIR) $< -L$(PRINTF_DIR) -lftprintf -o $@
 
+# Debugging rule
+DEBUG_CFLAGS = $(CFLAGS) -g
+DEBUG_EXECUTABLES = $(TEST_FILES:$(TESTS_DIR)/%.c=%_debug)
+
+$(DEBUG_EXECUTABLES): %_debug: $(TESTS_DIR)/%.c $(PRINTF)
+	@$(CC) $(DEBUG_CFLAGS) -I$(PRINTF_DIR) $< -L$(PRINTF_DIR) -lftprintf -o $@
+
+.PHONY: debug
+debug: $(DEBUG_EXECUTABLES)
+	@echo "Debug executables created"
+
+
 # Colors styling
 RED = \033[31m
 GREEN = \033[32m

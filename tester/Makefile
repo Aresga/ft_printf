@@ -32,8 +32,8 @@ MAGENTA = \033[35m
 # Rule to run all tests and display results
 .PHONY: test
 test: $(TEST_EXECUTABLES)
-	@for test_exec in $^; do \
-		./$$test_exec; \
+		@for test_exec in $^; do \
+			./$$test_exec; \
 	done
 
 .PHONY: clean

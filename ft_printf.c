@@ -6,7 +6,7 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:50:06 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/13 16:29:52 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/13 17:35:53 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,34 +26,38 @@ static int	ft_putstr(char *str)
 		ft_putchar(str[i]);
 		i++;
 	}
-	return i; // Add a return statement
+	return i;
 }
 
-static int	ft_putnbr_base(long n, int base)
+static int ft_putnbr_base(long n, int base, int b)
 {
-	int	i;
+	int i;
 	char *symb;
 
-//	if (base < 2 || base > 16)
-//        return (0);
-	symb = "0123456789abcdef";
+	if (b == 10)
+		symb = "0123456789";
+	else if (b == 16)
+		symb = "0123456789abcdef";
+	else if (b == 17)
+		symb = "0123456789ABCDEF";
 	if (n < 0)
 	{
 		ft_putchar('-');
-		return (ft_putnbr_base(-n, base) + 1);
+		return (ft_putnbr_base(-n, base, b) + 1);
 	}
 	else if (n < base)
 		return (ft_putchar(symb[n]));
 	else
 	{
-		i = ft_putnbr_base(n / base, base);
-		return (i + ft_putnbr_base(symb[n % base], base));
+		i = ft_putnbr_base(n / base, base, b);
+		return (i + ft_putnbr_base(n % base, base, b));
 	}
 }
 
+
 static char	ft_print_format(char specifier, va_list ap)
 {
-	int i; 
+	int i;
 
 	i = 0;
 	if (specifier == 'c')
@@ -61,9 +65,13 @@ static char	ft_print_format(char specifier, va_list ap)
 	else if (specifier == 's')
 		i += ft_putstr(va_arg(ap, char *));
 	else if (specifier == 'd')
-		i += ft_putnbr_base((long)va_arg(ap, int), 10);
+		i += ft_putnbr_base((long)va_arg(ap, int), 10, 10);
 	else if (specifier == 'x')
-		i += ft_putnbr_base((long)va_arg(ap, unsigned int), 16);
+		i += ft_putnbr_base((long)va_arg(ap, unsigned int), 16, 16);
+	else if (specifier == 'X')
+		i += ft_putnbr_base((long)va_arg(ap, unsigned int), 16, 17);
+	else if (specifier == '%')
+		i += ft_putchar('%');
 	else
 		i += write(1, &specifier, 1);
 	return (i); 

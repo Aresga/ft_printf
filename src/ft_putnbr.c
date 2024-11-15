@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 12:18:56 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 18:26:19 by agaga            ###   ########.fr       */
+/*   Created: 2024/11/15 18:02:55 by agaga             #+#    #+#             */
+/*   Updated: 2024/11/15 18:24:22 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putptr(void *ptr)
+int	ft_putnbr(long n, int base)
 {
-	int				i;
-	unsigned long	nbr;
+	int		i;
+	char	*symb;
 
-	i = 0;
-	nbr = (unsigned long)ptr;
-	if (nbr == 0)
-		i += ft_putstr("(nil)");
+	symb = "0123456789";
+	if (n < 0)
+	{
+		ft_putchar('-');
+		return (ft_putnbr(-n, base) + 1);
+	}
+	if (n < base)
+		return (ft_putchar(symb[n]));
 	else
 	{
-		i += ft_putstr("0x");
-		i += ft_putnbr_base(nbr, 16, 6);
+		i = ft_putnbr(n / base, base);
+		return (i + ft_putnbr(n % base, base));
 	}
-	return (i);
 }

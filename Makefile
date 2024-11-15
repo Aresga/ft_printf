@@ -12,6 +12,7 @@ SRC = ft_printf.c \
 		$(SRC_DIR)ft_print_format.c \
 		$(SRC_DIR)ft_putptr.c \
 		$(SRC_DIR)ft_strlen.c \
+		$(SRC_DIR)ft_putnbr.c 
 
 HEADER = ./ft_printf.h
 
@@ -30,7 +31,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -f $(OBJS)
-	@echo "Object files deleted along with libft objs."
+	@echo "Object files deleted."
 
 fclean: clean
 	@rm -f $(NAME)

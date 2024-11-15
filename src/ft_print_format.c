@@ -6,7 +6,7 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:23:03 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 17:52:21 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/15 18:23:20 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_print_format(char specifier, va_list ap)
 	else if (specifier == 's')
 		i += ft_putstr(va_arg(ap, char *));
 	else if (specifier == 'd' || specifier == 'i')
-		i += ft_putnbr_base((long)va_arg(ap, int), 10, 1);
+		i += ft_putnbr((long)va_arg(ap, int), 10);
 	else if (specifier == 'x')
 		i += ft_putnbr_base((long)va_arg(ap, unsigned int), 16, 6);
 	else if (specifier == 'X')
@@ -34,7 +34,6 @@ size_t	ft_print_format(char specifier, va_list ap)
 	else if (specifier == 'u')
 		i += ft_putnbr_u(va_arg(ap, unsigned int));
 	else
-	//	i += ft_putchar(specifier);
 		i += write(1, &specifier, 1);
-	return (i); 
+	return (i);
 }

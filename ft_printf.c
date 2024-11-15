@@ -6,16 +6,16 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:50:06 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 12:23:44 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/15 16:04:57 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list ap;
-	int count;
+	va_list	ap;
+	int		count;
 
 	va_start(ap, format);
 	count = 0;
@@ -28,5 +28,5 @@ int ft_printf(const char *format, ...)
 		++format;
 	}
 	va_end(ap);
-	return count;
+	return (count);
 }

@@ -6,21 +6,19 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:16:10 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 12:17:07 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/15 16:00:24 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+size_t	ft_putstr(const char *str)
 {
-	int	i;
+	size_t	i;
 
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
+	if (!str)
+		str = "(null)";
+	i = ft_strlen(str);
+	write(1, str, i);
 	return (i);
 }

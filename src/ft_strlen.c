@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 12:18:56 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 14:23:36 by agaga            ###   ########.fr       */
+/*   Created: 2024/11/15 15:07:08 by agaga             #+#    #+#             */
+/*   Updated: 2024/11/15 15:57:04 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putptr(unsigned long ptr)
+size_t	ft_strlen(const char *str)
 {
-	int	i;
-
-	i = 0;
-	i += ft_putstr("0x");
-	i += ft_putnbr_base(ptr, 16, 1);
-	return (i);
+    size_t length; 
+	
+	length = 0;
+    while (str[length])
+	{
+		length++;
+	}
+    return (length);
 }

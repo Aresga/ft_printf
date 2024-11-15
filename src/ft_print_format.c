@@ -6,15 +6,15 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:23:03 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 12:24:54 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/15 16:05:50 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	ft_print_format(char specifier, va_list ap)
+size_t	ft_print_format(char specifier, va_list ap)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (specifier == 'c')
@@ -34,6 +34,7 @@ char	ft_print_format(char specifier, va_list ap)
 	else if (specifier == 'u')
 		i += ft_putnbr_u(va_arg(ap, unsigned int));
 	else
+	//	i += ft_putchar(specifier);
 		i += write(1, &specifier, 1);
 	return (i); 
 }

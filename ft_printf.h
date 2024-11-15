@@ -6,7 +6,7 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:49:42 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 17:32:17 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/15 17:59:04 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdio.h>
-//# include "./libft/libft.h"
+
 #define BLUE "\033[34m"
 #define RESET "\033[0m"
 

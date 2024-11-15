@@ -6,7 +6,7 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:17:31 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 17:35:09 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/15 17:57:57 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	ft_putnbr_base(unsigned long n, unsigned int base, int b)
 		symb = "0123456789abcdef";
 	else if (b == 7)
 		symb = "0123456789ABCDEF";
+	if (n < 0)
+	{
+		ft_putchar('-');	
+		return (ft_putnbr_base(-n, base, b) + 1);
+	}
 	if (n < base)
 		return (ft_putchar(symb[n]));
 	else
@@ -31,3 +36,4 @@ int	ft_putnbr_base(unsigned long n, unsigned int base, int b)
 		return (i + ft_putnbr_base(n % base, base, b));
 	}
 }
+

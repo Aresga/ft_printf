@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 20:50:06 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 12:23:44 by agaga            ###   ########.fr       */
+/*   Created: 2024/11/15 12:17:31 by agaga             #+#    #+#             */
+/*   Updated: 2024/11/15 12:22:13 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+int	ft_putnbr_base(long n, int base, int b)
 {
-	va_list ap;
-	int count;
+	int		i;
+	char	*symb;
 
-	va_start(ap, format);
-	count = 0;
-	while (*format != '\0')
+	if (b == 1)
+		symb = "0123456789";
+	else if (b == 6)
+		symb = "0123456789abcdef";
+	else if (b == 7)
+		symb = "0123456789ABCDEF";
+	if (n < 0)
 	{
-		if (*format == '%')
-			count += ft_print_format(*(++format), ap);
-		else
-			count += write(1, format, 1);
-		++format;
+		ft_putchar('-');
+		return (ft_putnbr_base(-n, base, b) + 1);
 	}
-	va_end(ap);
-	return count;
+	else if (n < base)
+		return (ft_putchar(symb[n]));
+	else
+	{
+		i = ft_putnbr_base(n / base, base, b);
+		return (i + ft_putnbr_base(n % base, base, b));
+	}
 }

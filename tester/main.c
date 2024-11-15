@@ -6,7 +6,7 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:49:51 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/13 18:26:25 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/15 13:01:06 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 
 int main()
 {
-	unsigned int unsignedNum = 123;
-	char *ptr = "123";
+	unsigned int unsignedNum = 12433;
+	char *pt = "Pointerstuff";
 
-	ft_printf("String is: %s\n", "adbsn");
+	ft_printf("String is:"BLUE" %s\n"RESET, "adbsn");
 	ft_printf("Character: %c\n", 'A');
 	ft_printf("My Age is %d\n", INT_MIN);
 	ft_printf("My Age is %d\n", INT_MAX);
@@ -37,11 +37,11 @@ int main()
 	ft_printf("%%\n");
 	ft_printf("My Age is %i\n", 123);
 	ft_printf("Unsigned integer: %u\n", unsignedNum);
-	ft_printf("Pointer address: %p\n", ptr);
+	ft_printf("Pointer address: %p\n", pt);
 
 	printf("\n");
 	printf("\n");
-	printf("String is: %s\n", "adbsn");
+	printf("String is:"BLUE" %s\n"RESET, "adbsn");
 	printf("Character: %c\n", 'A');
 	printf("My Age is %d\n", INT_MIN);
 	printf("My Age is %d\n", INT_MAX);
@@ -50,7 +50,7 @@ int main()
 	printf("%%\n");
 	printf("My Age is %i\n", 123);
 	printf("Unsigned integer: %u\n", unsignedNum);
-	printf("Pointer address: %p\n", ptr);
+	printf("Pointer address: %p\n", pt);
     return 0;
 }
     

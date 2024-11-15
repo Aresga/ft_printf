@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 20:50:06 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 12:23:44 by agaga            ###   ########.fr       */
+/*   Created: 2024/11/15 12:13:25 by agaga             #+#    #+#             */
+/*   Updated: 2024/11/15 12:15:11 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+int	ft_putchar(int c)
 {
-	va_list ap;
-	int count;
-
-	va_start(ap, format);
-	count = 0;
-	while (*format != '\0')
-	{
-		if (*format == '%')
-			count += ft_print_format(*(++format), ap);
-		else
-			count += write(1, format, 1);
-		++format;
-	}
-	va_end(ap);
-	return count;
+	return (write(1, &c, 1));
 }

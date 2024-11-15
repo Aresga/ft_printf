@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 20:50:06 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 12:23:44 by agaga            ###   ########.fr       */
+/*   Created: 2024/11/15 12:20:53 by agaga             #+#    #+#             */
+/*   Updated: 2024/11/15 12:22:18 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+int	ft_putnbr_u(unsigned int n)
 {
-	va_list ap;
-	int count;
+	int	i;
 
-	va_start(ap, format);
-	count = 0;
-	while (*format != '\0')
-	{
-		if (*format == '%')
-			count += ft_print_format(*(++format), ap);
-		else
-			count += write(1, format, 1);
-		++format;
-	}
-	va_end(ap);
-	return count;
+	i = 0;
+	if (n >= 10)
+		i += ft_putnbr_u(n / 10);
+	i += ft_putchar((n % 10) + '0');
+	return (i);
 }

@@ -6,13 +6,13 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:17:31 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 12:22:13 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/15 17:35:09 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_base(long n, int base, int b)
+int	ft_putnbr_base(unsigned long n, unsigned int base, int b)
 {
 	int		i;
 	char	*symb;
@@ -23,12 +23,7 @@ int	ft_putnbr_base(long n, int base, int b)
 		symb = "0123456789abcdef";
 	else if (b == 7)
 		symb = "0123456789ABCDEF";
-	if (n < 0)
-	{
-		ft_putchar('-');
-		return (ft_putnbr_base(-n, base, b) + 1);
-	}
-	else if (n < base)
+	if (n < base)
 		return (ft_putchar(symb[n]));
 	else
 	{

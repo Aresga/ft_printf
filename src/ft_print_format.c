@@ -6,7 +6,7 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:23:03 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 16:05:50 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/15 17:35:13 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	ft_print_format(char specifier, va_list ap)
 	else if (specifier == '%')
 		i += ft_putchar('%');
 	else if (specifier == 'p')
-		i += ft_putptr((unsigned long)va_arg(ap, void *));
+		i += ft_putptr(va_arg(ap, void *));
 	else if (specifier == 'u')
 		i += ft_putnbr_u(va_arg(ap, unsigned int));
 	else

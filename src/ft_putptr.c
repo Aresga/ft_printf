@@ -6,18 +6,25 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:18:56 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 14:23:36 by agaga            ###   ########.fr       */
+/*   Updated: 2024/11/15 17:35:33 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putptr(unsigned long ptr)
+int	ft_putptr(void *ptr)
 {
 	int	i;
+	unsigned long nbr;
 
 	i = 0;
-	i += ft_putstr("0x");
-	i += ft_putnbr_base(ptr, 16, 1);
+	nbr = (unsigned long)ptr;
+	if (nbr == 0)
+		i += ft_putstr("(nil)");
+	else
+	{
+		i += ft_putstr("0x");
+		i += ft_putnbr_base(nbr, 16, 6);
+	}
 	return (i);
 }

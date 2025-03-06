@@ -1,6 +1,6 @@
 # ft_printf
 
-A custom implementation of the standard `printf` function in C, developed as part of the 42 curriculum. This project aims to deepen understanding of variadic functions and formatted output in C.
+A custom implementation of the standard `printf` function in C, developed as part of Hive Helsinki curriculum. This project aims to deepen understanding of variadic functions and formatted output in C.
 
 ## Table of Contents
 

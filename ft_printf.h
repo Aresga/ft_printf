@@ -6,7 +6,7 @@
 /*   By: agaga <agaga@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:49:42 by agaga             #+#    #+#             */
-/*   Updated: 2024/11/15 18:13:34 by agaga            ###   ########.fr       */
+/*   Updated: 2025/03/06 15:02:56 by agaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <unistd.h>
 # include <stdio.h>
 
-#define BLUE "\033[34m"
-#define RESET "\033[0m"
+# define BLUE "\033[34m"
+# define RESET "\033[0m"
 
 int		ft_printf(const char *format, ...);
 int		ft_putchar(int c);

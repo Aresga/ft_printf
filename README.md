@@ -1,6 +1,3 @@
-Certainly! Here's a tailored `README.md` file for your `ft_printf` repository:
-
-```markdown
 # ft_printf
 
 A custom implementation of the standard `printf` function in C, developed as part of the 42 curriculum. This project aims to deepen understanding of variadic functions and formatted output in C.
